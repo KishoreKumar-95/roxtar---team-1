@@ -1,0 +1,6 @@
+{
+    "COHERE_API_KEY":"",
+    "PINECONE_API_KEY":"",
+    "PINECONE_API_ENV":"",
+    "PINECONE_INDEX_NAME":""
+}

@@ -1,5 +1,8 @@
-altair
-numpy
-pandas
-pydeck
-streamlit
+langchain==0.0.155
+openai==0.27.6
+pinecone-client==2.2.1
+pypdf==3.8.1
+tiktoken==0.3.3
+streamlit==1.22.0
+flask==2.1.0
+cohere==4.11.2
