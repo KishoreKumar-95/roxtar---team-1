@@ -2,5 +2,6 @@
     "COHERE_API_KEY":"FdiXQmkmhZngwMZkqch1DDbeKh5lrQdanJWrBWJK",
     "PINECONE_API_KEY":"b73b949c-65b1-40e1-bc5c-f156712581ff",
     "PINECONE_API_ENV":"gcp-starter",
-    "PINECONE_INDEX_NAME":"roxtar"
+    "PINECONE_INDEX_NAME":"roxtar",
+    "OPENAI_API_KEY":"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"
 }

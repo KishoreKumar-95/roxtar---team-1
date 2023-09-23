@@ -18,11 +18,11 @@ files = ["media/tcs-ar-22.pdf"]
 # read pdfs into a list using pdf loader
 pdfs = bot._load_pdfs(*files)
 # split documents with token splitter
-documents = bot._split_documents_by_tokentext(pdfs, chunk_size=500, chunk_overlap=100)
+documents = bot._split_documents_by_tokentext(pdfs, chunk_size=1600, chunk_overlap=100)
 # send documents to pinecone index
 bot._update_pinecone_index(documents)
 # start conversation bot
 bot._init_conversation_bot()
 bot.perform_query("What is tcs")
-bot.perform_query("consolidated statement for 2022")
-bot.perform_query("who is the ceo")
+# bot.perform_query("consolidated statement for 2022")
+# bot.perform_query("who is the ceo")

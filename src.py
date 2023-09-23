@@ -14,10 +14,10 @@ import os
 import pinecone
 from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders import PyPDFLoader
-# from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.embeddings import CohereEmbeddings
-# from langchain.llms import OpenAI
-from langchain.llms import Cohere
+from langchain.embeddings.openai import OpenAIEmbeddings
+#from langchain.embeddings import CohereEmbeddings
+from langchain.llms import OpenAI
+#from langchain.llms import Cohere
 from langchain.memory import ConversationBufferMemory
 from langchain.text_splitter import TokenTextSplitter
 from langchain.vectorstores import Pinecone
@@ -33,7 +33,7 @@ class MerlinBot:
         # Initialize Pinecone
         self.config = config
         if self.config is None:
-            self.config["COHERE_API_KEY"] = os.environ["COHERE_API_KEY"]
+            #self.config["COHERE_API_KEY"] = os.environ["COHERE_API_KEY"]
             self.config["PINECONE_API_KEY"] = os.environ["PINECONE_API_KEY"]
             self.config["PINECONE_API_ENV"] = os.environ["PINECONE_API_ENV"]
             self.config["PINECONE_INDEX_NAME"] = self.config["PINECONE_INDEX_NAME"]
@@ -43,8 +43,8 @@ class MerlinBot:
         )
         self.vectorstore = None
         self.llm = None
-        # self.embeddings = OpenAIEmbeddings(openai_api_key=self.config["OPENAI_API_KEY"])
-        self.embeddings = CohereEmbeddings(cohere_api_key=self.config["COHERE_API_KEY"])
+        self.embeddings = OpenAIEmbeddings(openai_api_key=self.config["OPENAI_API_KEY"])
+        #self.embeddings = CohereEmbeddings(cohere_api_key=self.config["COHERE_API_KEY"])
         self._init_llm()
         self._init_vectorstore()
         self._init_retriever_from_vectorstore()
@@ -61,8 +61,8 @@ class MerlinBot:
         Pinecone.from_documents(documents, self.embeddings, index_name=self.config["PINECONE_INDEX_NAME"])
 
     def _init_llm(self, temperature=0):
-        # self.llm = OpenAI(temperature=temperature, openai_api_key=self.config["OPENAI_API_KEY"])
-        self.llm = Cohere(temperature=temperature, cohere_api_key=self.config["COHERE_API_KEY"])
+        self.llm = OpenAI(temperature=temperature, openai_api_key=self.config["OPENAI_API_KEY"])
+        #self.llm = Cohere(temperature=temperature, cohere_api_key=self.config["COHERE_API_KEY"])
 
     def update_temperature(self, new_temperature):
         self.llm.temperature = new_temperature
